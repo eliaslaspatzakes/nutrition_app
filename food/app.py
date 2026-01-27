@@ -14,17 +14,25 @@ st.set_page_config(
 # --- 2. LOAD MODELS ---
 @st.cache_resource
 def load_models():
-    if not os.path.exists('model_xgb.pkl') or not os.path.exists('model_reg.pkl'):
+   
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    
+    class_model_path = os.path.join(current_dir, 'model_xgb.pkl')
+    reg_model_path = os.path.join(current_dir, 'model_reg.pkl')
+
+    
+    if not os.path.exists(class_model_path) or not os.path.exists(reg_model_path):
         return None, None
     
     try:
-        model_class = joblib.load('model_xgb.pkl')
-        model_reg = joblib.load('model_reg.pkl')
+        model_class = joblib.load(class_model_path)
+        model_reg = joblib.load(reg_model_path)
         return model_class, model_reg
     except Exception as e:
         st.error(f"Error loading models: {e}")
         return None, None
-
+    
 # --- 3. LOGIC FUNCTIONS ---
 def predict_calories(model_reg, fat, carbs, protein, fiber):
     data = pd.DataFrame([{
