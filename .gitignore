@@ -1,0 +1,13 @@
+# Ignore virtual environment folder
+env/
+venv/
+.venv/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore VS Code settings
+.vscode/
+
+# Keep the models! (Do NOT ignore .pkl files unless they are >100MB)
