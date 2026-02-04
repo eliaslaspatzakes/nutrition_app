@@ -147,7 +147,7 @@ def main():
         st.divider()
         st.info("Tip: Press **TAB** to move through the form quickly!")
 
-    st.title("🥑 AI Nutritionist")
+    st.title("AI Nutritionist")
     st.markdown("### Check if your food is *actually* healthy.")
     st.write("---")
 
@@ -161,7 +161,7 @@ def main():
     with st.form("nutrition_form"):
         col_main, col_spacer = st.columns([2, 1])
         with col_main:
-            name = st.text_input("🍎 Food Name", placeholder="e.g. Greek Yogurt")
+            name = st.text_input("Food Name", placeholder="e.g. Greek Yogurt")
 
         st.write("#### Macro Nutrients")
         c1, c2, c3, c4 = st.columns(4)
@@ -215,7 +215,7 @@ def main():
 
                     # --- ROW 1: BASIC STATS ---
                     m1, m2, m3 = st.columns(3)
-                    m1.metric("🔥 Calculated Calories", f"{predicted_calories:.0f} kcal")
+                    m1.metric("Calculated Calories", f"{predicted_calories:.0f} kcal")
                     
                     if prediction == 1:
                         verdict = "HEALTHY"
@@ -226,7 +226,7 @@ def main():
                         conf_score = 1 - prob_healthy if prob_healthy is not None else 0.0
                         color_box = st.error
 
-                    m2.metric("🤖 AI Verdict", verdict)
+                    m2.metric("AI Verdict", verdict)
                     m3.metric("Confidence", f"{conf_score:.1%}")
                     
                     # --- ROW 2: PROTEIN ANALYSIS ---
